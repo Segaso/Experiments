@@ -1,33 +1,41 @@
-=begin
-	TO DO:
-		• Add the ability to append to CSV
-		• Import CSV
-		• Add Tax and Net Pay
 
-=end
 
 require 'time'
 
-print "Enter Start Time: "
-	s_time = gets.chomp.to_s
-
-print "Enter End Time: "
-	e_time = gets.chomp.to_s
-
-print "Enter Hourly Rate: [Default $10] "
-	rate = gets.chomp.to_i
-
-# print "Tax percent: "
-	# tax = gets.chomp.to_i
-
-if rate == 0
-	rate = 10
+def gross_pay (start, stop, pay)
+	seconds = Time.parse(stop) - Time.parse(start)
+	minutes = seconds / 60
+	hours = minutes / 60
+	total = hours * pay
+	puts ""
+	puts "=================================="
+	puts "Total Gross Payment: $#{total}"
+	puts "Total Hours Worked: #{hours}"
+	puts "Total Minutes Worked: #{minutes}"
+	puts "=================================="
 end
-puts "#{rate}"
-# if tax == ""
-	# tax = "1.104"
-# end
-	
-gross =(((Time.parse(e_time) - Time.parse(s_time))/60/60)*rate).round(2).to_s
-puts " "
-puts "Total Gross Payment: $#{gross}"
+
+def single_day
+	puts "=================================="
+	print "Enter Start Time: "
+		s_time = gets.chomp
+
+	print "Enter End Time: "
+		e_time = gets.chomp
+
+	print "Enter Hourly Rate: [Default $10] "
+		rate = gets.chomp.to_i
+	puts "=================================="
+	if rate == 0
+		rate = 10
+	end
+	puts gross_pay(s_time, e_time, rate)
+end
+
+def multple_day
+
+
+end
+
+single_day
+
