@@ -8,6 +8,7 @@ def gross_pay (start, stop, pay)
 	hours = minutes / 60
 	total = hours * pay
 	puts ""
+	puts ""
 	puts "=================================="
 	puts "Total Gross Payment: $#{total}"
 	puts "Total Hours Worked: #{hours}"
@@ -33,9 +34,15 @@ def single_day
 end
 
 def multple_day
+	print "Path to CSV: "
+	time_csv = gets.chomp
 
+	CSV.foreach(time_csv) do |row|
+		
+	end
 
 end
 
 single_day
+
 
