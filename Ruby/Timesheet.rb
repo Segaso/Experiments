@@ -1,6 +1,7 @@
 
 
 require 'time'
+require 'CSV'
 
 def gross_pay (start, stop, pay)
 	seconds = Time.parse(stop) - Time.parse(start)
@@ -33,16 +34,31 @@ def single_day
 	puts gross_pay(s_time, e_time, rate)
 end
 
-def multple_day
+def multiple_days
+	m_total = 0
 	print "Path to CSV: "
-	time_csv = gets.chomp
+		m_path = gets.chomp
+	print "Enter Pay Rate: "
+		m_rate = gets.chomp.to_f
 
-	CSV.foreach(time_csv) do |row|
+	CSV.foreach(m_path, 			 :headers           => true, 
+									 :header_converters => :symbol,
+									 :converters        => :numeric ) do |row|
 		
+		m_time = (Time.parse(row[:end]) - Time.parse(row[:start])).to_f
+		mh_time = m_time / 60 / 60
+		
+		m_total = m_total.to_f + mh_time.to_f
 	end
 
+
+		m_gross = m_total * m_rate
+			puts ""
+			puts "=================================="
+			puts "Total Gross Payment: $#{m_total}"
+			puts "Total Hours Worked: #{m_total}"
+			puts "=================================="	
+		
+
 end
-
-single_day
-
-
+	multiple_days

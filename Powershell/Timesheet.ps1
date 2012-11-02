@@ -19,9 +19,8 @@
 			echo "Hours Total    :  $Total"
             echo "Minutes Total  :  $MinutesTotal"
             echo "Gross Total    :  $MoneyTotal"
-			echo "After Uncle Sam:  $Tax
+			echo "After Uncle Sam:  $Tax"
 			
-            Clear-Variable Hourst,Hours,OTHours,HTotal,Total,Minutes,MinutesTotal
 			
             Write-Host "Press any key to continue ..."
 
